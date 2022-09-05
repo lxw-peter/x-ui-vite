@@ -14,13 +14,13 @@
   <div id="app"></div>
   <script type="module">
     import { createApp } from "vue/dist/vue.esm-bundler.js";
-    import { SFCButton, JSXButton, MyButton } from "../../dist/smarty-ui.esm.js";
+    import { SFCButton, JSXButton, SButton } from "../../dist/smarty-ui.esm.js";
     // 单独引入
     createApp({
-      template: `<SButton/><JSXButton/><SFCButton/>`
+      template: `<SButton>SButton</SButton><JSXButton/><SFCButton/>`
     }).component(SFCButton.name, SFCButton)
       .component(JSXButton.name, JSXButton)
-      .component(MyButton.name, MyButton).mount('#app')
+      .component(SButton.name, SButton).mount('#app')
   </script>
 </body>
 
