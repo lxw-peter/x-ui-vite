@@ -187,3 +187,55 @@ export default defineConfig({
   }
 });
 ```
+
+## CSS 样式 - 用Unocss实现原子化CSS
+
+`Taiwind` 和 `Unocss` 都可以实现原子样式，为什么采用 `Unocss` ?
+
+- 性能更好，更强的可定制型和易用性
+- 无需解析、无需AST、无需扫描，即时生成
+- 对 Vite 的支持性更好
+
+### 安装
+
+```sh
+# @iconify-json/ic 图标库可自行选用 
+pnpm i -D unocss @iconify-json/ic
+```
+
+### 配置
+
+```ts
+// config/unocss
+import { presetUno, presetAttributify, presetIcons } from 'unocss';
+import Unocss from 'unocss/vite';
+// 配置 safelist, UnoCSS 默认是按需生成方式， 需要定制安全列表才会根据 safelist 生成样式
+const safelist = [
+  ...colors.map((v) => `bg-${v}-100`),
+]
+export default () =>
+  Unocss({
+    safelist,
+    presets: [presetUno(), presetAttributify(), presetIcons()],
+  });
+
+// vite.config.ts
+import Unocss from './config/unocss';
+defineConfig({
+  plugins: [vue(), vueJsx(), Unocss()],
+  // ...
+})
+```
+
+### 使用
+
+```tsx
+import 'uno.css';
+
+export default defineComponent({
+  name: 'SButton',
+  props,
+  setup(props, { slots }) {
+    return <button class="bg-color-500 cursor-pointer"></button>
+  })
+```
