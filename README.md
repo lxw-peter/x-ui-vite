@@ -239,3 +239,92 @@ export default defineComponent({
     return <button class="bg-color-500 cursor-pointer"></button>
   })
 ```
+
+## VitePress 生成组件文档
+
+### 安装插件
+
+```sh
+# 这里没有使用vitepress@1.0RC版本是因为 vitepress-theme-demoblock 插件还未适配
+pnpm i vitepress@0.22.4 vitepress-theme-demoblock@1.4.2 -D
+pnpm i @types/node -D
+```
+
+### 文件目录示例
+
+```
+├─index.md                 // 自定义内容
+├─vite.config.ts           // 配置vite
+├─components
+|     ├─button
+|     |   └index.md        // 自定义内容
+├─.vitepress
+|     ├─config.ts          // vitepress 配置
+|     ├─theme
+|     |   └index.ts        // 主题配置
+
+```
+
+### vite.config.ts
+
+```ts
+import { defineConfig } from 'vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import Unocss from '../config/unocss';
+
+export default defineConfig({
+  plugins: [vueJsx(), Unocss()],
+});
+```
+
+### .vitepress/config.ts
+
+```ts
+// 配置侧边栏
+const sidebar = {
+  '/': [
+    { text: '快速开始', link: '/' },
+    {
+      text: '通用',
+      children: [{ text: 'Button 按钮', link: '/components/button/' }],
+    },
+    
+  ],
+};
+const config = {
+  title: 'VitePress',
+  description: 'Just playing around.',
+  themeConfig: {
+    sidebar,
+  },
+  markdown: {
+    config: (md) => {
+      const { demoBlockPlugin } = require('vitepress-theme-demoblock');
+      md.use(demoBlockPlugin);
+    },
+  },
+};
+export default config;
+
+```
+
+### .vitepress/theme/index.ts
+
+```ts
+import DefaultTheme from 'vitepress/theme';
+import SmartyUI from '../../../src/entry';
+// 主题样式
+import 'vitepress-theme-demoblock/theme/styles/index.css';
+// 插件的组件，主要是demo组件
+import Demo from 'vitepress-theme-demoblock/components/Demo.vue';
+import DemoBlock from 'vitepress-theme-demoblock/components/DemoBlock.vue';
+
+export default {
+  ...DefaultTheme,
+  enhanceApp({ app }) {
+    app.use(SmartyUI);
+    app.component('Demo', Demo);
+    app.component('DemoBlock', DemoBlock);
+  },
+};
+```

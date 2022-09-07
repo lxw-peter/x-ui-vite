@@ -1,3 +1,4 @@
+// 配置侧边栏
 const sidebar = {
   '/': [
     { text: '快速开始', link: '/' },
