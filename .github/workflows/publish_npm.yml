@@ -20,12 +20,8 @@ jobs:
       - name: Install modules
         run: pnpm install
       - name: Build
-        run:  npm run build
+        run: npm run build
       - name: "Publish to the npm registry"
         uses: primer/publish@3.0.0
         env:
-          GITHUB_TOKEN: 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
-          NPM_AUTH_TOKEN: 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 # 跟前面步骤中的 NPM_AUTH_TOKEN 保持一致
-        with:
-          default_branch: "publish"
-          #dir: "x-ui-vite"
+          NODE_AUTH_TOKEN: "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"
