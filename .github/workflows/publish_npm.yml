@@ -24,4 +24,4 @@ jobs:
       - name: "Publish to the npm registry"
         uses: primer/publish@3.0.0
         env:
-          NODE_AUTH_TOKEN: "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"
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
