@@ -1,5 +1,5 @@
 import { createApp } from 'vue/dist/vue.esm-bundler.js';
-import SmartUI, { MyButton, SFCButton, JSXButton } from './entry';
+import SmartUI, { SButton, SFCButton, JSXButton } from './entry';
 
 const app = createApp({
   template: `<div>
