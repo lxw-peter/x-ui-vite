@@ -21,6 +21,7 @@ export default defineConfig({
       web: [/.[tj]sx$/],
     },
   },
+
   build: {
     rollupOptions,
     minify: 'terser', // 压缩模式
@@ -29,8 +30,8 @@ export default defineConfig({
     cssCodeSplit: true, // 拆分css
     lib: {
       entry: './src/entry.ts',
-      name: 'SmartyUI',
-      fileName: 'smarty-ui',
+      name: 'XUI',
+      fileName: 'x-ui',
       formats: ['esm', 'umd', 'iife'],
     },
   },
