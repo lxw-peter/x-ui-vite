@@ -35,8 +35,8 @@ export default defineConfig({
       formats: [
         'es',
         'esm',
+        // 'umd',
         // 'iife',
-        // 'umd'
       ],
     },
   },
