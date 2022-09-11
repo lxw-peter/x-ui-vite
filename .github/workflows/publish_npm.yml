@@ -18,9 +18,9 @@ jobs:
         with:
           version: 6.31.0
       - name: Install modules
-        run: cd packages/x-ui-vite && pnpm install
+        run: pnpm install
       - name: Build
-        run: pnpm run build
+        run: cd packages/x-ui-vite && pnpm run build
       - name: "Publish to the npm registry"
         uses: primer/publish@3.0.0
         env:

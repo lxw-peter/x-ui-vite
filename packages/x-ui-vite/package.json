@@ -2,13 +2,22 @@
   "name": "x-ui-vite",
   "version": "0.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "dist/smarty-ui.esm.js",
   "module": "dist/smarty-ui.esm.js",
   "files": [
     "src",
     "dist",
     "config"
   ],
+  "exports": {
+    ".": {
+      "import": {
+        "node": "./dist/x-ui-vite.mjs",
+        "default": "./dist/x-ui-vite.esm.js"
+      },
+      "require": "./dist/x-ui-vite.common.js"
+    }
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",
