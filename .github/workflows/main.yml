@@ -28,5 +28,5 @@ jobs:
           version: 7.11.0
       - name: Install modules
         run: pnpm install --no-frozen-lockfile
-      - name: RRun Test
+      - name: Run Test
         run: cd packages/x-ui && npm run test:run
