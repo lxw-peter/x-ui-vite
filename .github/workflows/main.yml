@@ -29,4 +29,4 @@ jobs:
       - name: Install modules
         run: pnpm install --no-frozen-lockfile
       - name: RRun Test
-        run: cd packages/x-ui-vite && npm run test:run
+        run: cd packages/x-ui && npm run test:run
