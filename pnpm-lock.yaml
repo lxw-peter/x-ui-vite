@@ -14,11 +14,9 @@ importers:
     specifiers:
       '@types/node': ^18.7.15
       vue: ^3.2.39
-      x-ui-vite: workspace:^0.0.5
     dependencies:
       '@types/node': registry.npmmirror.com/@types/node/18.7.16
       vue: registry.npmmirror.com/vue/3.2.39
-      x-ui-vite: link:../x-ui
 
   packages/x-ui:
     specifiers:
