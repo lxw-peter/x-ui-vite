@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Unocss from './config/unocss';
+import { resolve } from 'path';
 
 const rollupOptions = {
   external: ['vue', 'vue-router'],
@@ -21,17 +22,22 @@ export default defineConfig({
       web: [/.[tj]sx$/],
     },
   },
+
   build: {
     rollupOptions,
     minify: 'terser', // 压缩模式
     sourcemap: false, // 是否生成 sourcemap
-    brotliSize: true, // 显示压缩大小报告
     cssCodeSplit: true, // 拆分css
     lib: {
-      entry: './src/entry.ts',
-      name: 'SmartyUI',
-      fileName: 'smarty-ui',
-      formats: ['esm', 'umd', 'iife'],
+      entry: resolve(__dirname, 'src/entry.ts'),
+      name: 'XUI',
+      fileName: 'x-ui',
+      formats: [
+        'es',
+        'esm',
+        // 'iife',
+        // 'umd'
+      ],
     },
   },
 });
