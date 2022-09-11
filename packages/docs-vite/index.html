@@ -13,11 +13,11 @@
     <h1>Demo</h1>
     <div id="app"></div>
     <script type="module">
-        import style from "x-ui-vite/dist/style.css"
         import { createApp } from "vue/dist/vue.esm-bundler.js";
-        import SmartyUI, { SFCButton, JSXButton, SButton } from "x-ui-vite/dist/x-ui.esm.js";
+        import "x-ui-vite/dist/assets/entry.683fa2f4.css"
+        import SmartyUI, { SFCButton, JSXButton, SButton } from "x-ui-vite";
 
-        createApp({
+        const app = createApp({
             template: `
         <div style="margin-bottom:20px;">
             <SButton color="blue">主要按钮</SButton>
@@ -53,7 +53,9 @@
             <SButton color="yellow" round plain icon="message"></SButton>
             <SButton color="red" round plain icon="delete"></SButton>
         </div>
-    `}).use(SmartyUI).mount('#app')
+    `})
+        app.use(SmartyUI)
+        app.mount('#app')
 
     </script>
 </body>
