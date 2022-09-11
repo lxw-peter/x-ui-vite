@@ -1,6 +1,6 @@
 {
   "name": "x-ui-vite",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/x-ui.esm.js",
   "module": "dist/x-ui.esm.js",
