@@ -444,13 +444,20 @@ jobs:
 ## 创建 License
 
 1. 新建文件
-   ![新建文件](images/license_1.png)
+
+![新建文件](images/license_1.png)
+
 2. 输入 `LICENSE` 自动识别
-   ![输入 `LICENSE` 自动识别](images/license_2.png)
+
+![输入 `LICENSE` 自动识别](images/license_2.png)
+
 3. 选择 `license template`
-   ![选择 `license template`](images/license_3.png)
+
+![选择 `license template`](images/license_3.png)
+
 4. 提交
-   ![提交](images/license_4.png)
+
+  ![提交](images/license_4.png)
 
 ## 发布到 NPM
 

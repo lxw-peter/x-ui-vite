@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Unocss from './config/unocss';
@@ -13,8 +13,8 @@ const rollupOptions = {
   },
 };
 
-export default defineConfig({
-  plugins: [vue(), vueJsx(), Unocss()],
+export const config = {
+  plugins: [vue() as Plugin, vueJsx() as Plugin, Unocss() as Plugin[]],
   test: {
     globals: true,
     environment: 'happy-dom',
@@ -39,5 +39,7 @@ export default defineConfig({
         // 'iife',
       ],
     },
+    outDir: './dist',
   },
-});
+};
+export default defineConfig(config as UserConfig);
