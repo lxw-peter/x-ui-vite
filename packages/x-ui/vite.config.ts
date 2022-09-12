@@ -27,7 +27,7 @@ export default defineConfig({
     rollupOptions,
     minify: 'terser', // 压缩模式
     sourcemap: false, // 是否生成 sourcemap
-    cssCodeSplit: true, // 拆分css
+    // cssCodeSplit: true, // 拆分css
     lib: {
       entry: resolve(__dirname, 'src/entry.ts'),
       name: 'XUI',

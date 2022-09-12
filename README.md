@@ -1,6 +1,9 @@
 # 基于 Vite 的组件库工程化
 
+<p align="center">
 [![CI](https://github.com/lxw-peter/smarty-ui-vite/actions/workflows/main.yml/badge.svg)](https://github.com/lxw-peter/smarty-ui-vite/actions/workflows/main.yml)
+
+</p>
 
 ## 搭建开发环境
 
@@ -31,22 +34,21 @@ pnpm i vite -D
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Smarty UI</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Smarty UI</title>
+  </head>
 
-<body>
-  <div id="app">smarty ui</div>
-  <script type="module" src="./src/index.ts"></script>
-</body>
-
+  <body>
+    <div id="app">smarty ui</div>
+    <script type="module" src="./src/index.ts"></script>
+  </body>
 </html>
 ```
 
 ```ts
 // ./src/index.ts
-const arr: number[] = [1,2,3]
+const arr: number[] = [1, 2, 3];
 ```
 
 5. 启动项目
@@ -84,11 +86,11 @@ pnpm install @vitejs/plugin-vue @vitejs/plugin-vue-jsx -D
 // vite.config.ts
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vueJsx from "@vitejs/plugin-vue-jsx";
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default defineConfig({
   plugins: [vue(), vueJsx()],
-})
+});
 ```
 
 3. 创建类型声明文件
@@ -96,13 +98,13 @@ export default defineConfig({
 ```ts
 // src/shims-vue.d.ts
 declare module '*.vue' {
-  import { DefineComponent } from "vue";
+  import { DefineComponent } from 'vue';
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
 ```
 
-4. 创建tsconfig.json
+4. 创建 tsconfig.json
 
 ```json
 {
@@ -116,7 +118,6 @@ declare module '*.vue' {
   "esModuleInterop": true,
   "allowSyntheticDefaultImports": "true"
 }
-
 ```
 
 ### 组件库的封装形式
@@ -126,41 +127,41 @@ declare module '*.vue' {
 
 ```ts
 // src/entry.ts
-import { App } from "vue";
-import MyButton from "./button";
-import SFCButton from "./SFCButton.vue";
-import JSXButton from "./JSXButton";
+import { App } from 'vue';
+import MyButton from './button';
+import SFCButton from './SFCButton.vue';
+import JSXButton from './JSXButton';
 
 // 导出单独组件
 
-export {MyButton, SFCButton, JSXButton}
+export { MyButton, SFCButton, JSXButton };
 
 export default {
-  install(app:App):void {
-    app.component(MyButton.name, MyButton)
-    app.component(SFCButton.name, SFCButton)
-    app.component(JSXButton.name, JSXButton)
-  }
-}
+  install(app: App): void {
+    app.component(MyButton.name, MyButton);
+    app.component(SFCButton.name, SFCButton);
+    app.component(JSXButton.name, JSXButton);
+  },
+};
 ```
 
 ```ts
 // 单独引入
-import { createApp } from "vue/dist/vue.esm-bundler.js";
-import { SFCButton, JSXButton, MyButton } from "../../dist/smarty-ui.esm.js";
+import { createApp } from 'vue/dist/vue.esm-bundler.js';
+import { SFCButton, JSXButton, MyButton } from '../../dist/smarty-ui.esm.js';
 
-createApp({emplate: `<SButton/><JSXButton/><SFCButton/>`})
+createApp({ emplate: `<SButton/><JSXButton/><SFCButton/>` })
   .component(SFCButton.name, SFCButton)
   .component(JSXButton.name, JSXButton)
-  .component(MyButton.name, MyButton).mount('#app')
+  .component(MyButton.name, MyButton)
+  .mount('#app');
 ```
 
 ```ts
-import { createApp } from "vue/dist/vue.esm-bundler.js";
-import SmartyUI from "../../dist/smarty-ui.esm.js";
+import { createApp } from 'vue/dist/vue.esm-bundler.js';
+import SmartyUI from '../../dist/smarty-ui.esm.js';
 // 全量引入
-createApp({template: `<SButton/><JSXButton/><SFCButton/>`})
-  .use(SmartyUI).mount('#app')
+createApp({ template: `<SButton/><JSXButton/><SFCButton/>` }).use(SmartyUI).mount('#app');
 ```
 
 ### 使用 `Vite` 构建库文件
@@ -168,10 +169,10 @@ createApp({template: `<SButton/><JSXButton/><SFCButton/>`})
 ```ts
 // vite.config.ts
 const rollupOptions = {
-  external: ["vue", "vue-router"],
+  external: ['vue', 'vue-router'],
   output: {
     globals: {
-      vue: "Vue",
+      vue: 'Vue',
     },
   },
 };
@@ -184,24 +185,24 @@ export default defineConfig({
       entry: './src/entry.ts',
       name: 'SmartyUI',
       fileName: 'smarty-ui',
-      formats: ['esm', 'umd', 'iife']
-    }
-  }
+      formats: ['esm', 'umd', 'iife'],
+    },
+  },
 });
 ```
 
-## CSS 样式 - 用Unocss实现原子化CSS
+## CSS 样式 - 用 Unocss 实现原子化 CSS
 
 `Taiwind` 和 `Unocss` 都可以实现原子样式，为什么采用 `Unocss` ?
 
 - 性能更好，更强的可定制型和易用性
-- 无需解析、无需AST、无需扫描，即时生成
+- 无需解析、无需 AST、无需扫描，即时生成
 - 对 Vite 的支持性更好
 
 ### 安装
 
 ```sh
-# @iconify-json/ic 图标库可自行选用 
+# @iconify-json/ic 图标库可自行选用
 pnpm i -D unocss @iconify-json/ic
 ```
 
@@ -212,9 +213,7 @@ pnpm i -D unocss @iconify-json/ic
 import { presetUno, presetAttributify, presetIcons } from 'unocss';
 import Unocss from 'unocss/vite';
 // 配置 safelist, UnoCSS 默认是按需生成方式， 需要定制安全列表才会根据 safelist 生成样式
-const safelist = [
-  ...colors.map((v) => `bg-${v}-100`),
-]
+const safelist = [...colors.map((v) => `bg-${v}-100`)];
 export default () =>
   Unocss({
     safelist,
@@ -226,7 +225,7 @@ import Unocss from './config/unocss';
 defineConfig({
   plugins: [vue(), vueJsx(), Unocss()],
   // ...
-})
+});
 ```
 
 ### 使用
@@ -290,7 +289,6 @@ const sidebar = {
       text: '通用',
       children: [{ text: 'Button 按钮', link: '/components/button/' }],
     },
-    
   ],
 };
 const config = {
@@ -307,7 +305,6 @@ const config = {
   },
 };
 export default config;
-
 ```
 
 ### .vitepress/theme/index.ts
@@ -330,3 +327,148 @@ export default {
   },
 };
 ```
+
+## 软件包封装
+
+### 模块规范
+
+- ESM：ES 标准的模块化方案
+- IIFE：立即执行函数
+- CJS：基于　 CommonJS 标准的模块化
+
+```ts
+import { resolve } from 'path';
+export default defineConfig({
+  build: {
+    // 库模式
+    lib: {
+      entry: resolve(__dirname, 'src/entry.ts'),,
+      name: 'XUI', // 暴露的全局变量
+      formates: ['es', 'esm', 'umd', 'iife'], // 这里的 `esm`选项会输出内容和 `es` 一致的文件，文件名以`esm.js`结尾；不在支持的格式内，但可以生效
+      filename: 'x-ui', // 默认为 `package.json`的 `name` 选项，还可以是 `format` 函数
+    }
+    // 指定 lib 后，build.cssCodeSplit 默认为 false
+  }
+})
+```
+
+### 压缩混淆
+
+```ts
+// vite.config.ts
+export default defineConfig({
+  build: {
+    minify: 'terser', // boolean | 'terser' | 'esbuild'
+  },
+});
+```
+
+```sh
+// vite@3.0 版本 当`minify`为`terser`时，需要先安装Terser
+pnpm i -D terser
+```
+
+### SourceMap
+
+```ts
+// vite.config.ts
+export default defineConfig({
+  build: {
+    sourcemap: 'false', // boolean | 'inline' | 'hidden'
+  },
+});
+```
+
+## GitHub Action
+
+> [详细文档参考](https://docs.github.com/cn/actions/quickstart)
+
+### 目标
+
+上传到 GitHub 后开始自动化单元测试任务
+
+### 任务分解
+
+1. 根目录下创建 `.github/workflows` 工作目录
+
+2. 新建 `main.yml` 文件
+
+步骤：
+
+- 设置任务名称：`CI`
+- 触发机制：`push | pull_request`
+- 触发分支：`master`
+- 选择系统：`ubuntu-latest`
+- 运行环境: `npm`
+- 设置步骤
+  - 初始化运行环境
+  - CD 到对应目录
+  - 安装依赖
+  - 执行测试
+
+内容：
+
+```yaml
+# 设置任务名称：CI
+name: CI
+# 触发机制：push | pull_request
+# 触发分支：master
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+  workflow_dispatch:
+jobs:
+  build:
+    # 选择系统
+    runs-on: ubuntu-latest
+    steps:
+      # 初始化运行环境
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.11.0
+      - name: Install modules
+        # 安装依赖， --no-frozen-lockfile 设置不依赖 pnpm-lock.yaml 锁定版本，存在新版本自动升级;--frozen-lockfile 设置锁定版本
+        run: pnpm install --no-frozen-lockfile
+      - name: Run Test
+        run: cd packages/x-ui && npm run test:run
+```
+
+3. 提交代码
+
+4. 查看 actions 运行效果
+
+![提交代码开始自动化测试](images/action-test.png)
+
+## 创建 License
+
+1. 新建文件
+   ![新建文件](images/license_1.png)
+2. 输入 `LICENSE` 自动识别
+   ![输入 `LICENSE` 自动识别](images/license_2.png)
+3. 选择 `license template`
+   ![选择 `license template`](images/license_3.png)
+4. 提交
+   ![提交](images/license_4.png)
+
+## 发布到 NPM
+
+## 使用 GitHub Actions 自动发布
+
+## 使用 Monorepo 的构建方式管理组件库
+
+## 实现组件库按需引入
+
+## 文档部署
+
+## README 规范
+
+- 标题
+- banner
+- 特性、用途
+- 徽章：npm 下载量、测试覆盖率、通过 CI 工具持续验证
+  - [徽章制作查询](https://shields.io/)
+- Contributing 贡献者名单
+- 开源许可证
