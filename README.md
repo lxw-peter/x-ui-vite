@@ -1,8 +1,7 @@
 # 基于 Vite 的组件库工程化
 
 <p align="center">
-[![CI](https://github.com/lxw-peter/smarty-ui-vite/actions/workflows/main.yml/badge.svg)](https://github.com/lxw-peter/smarty-ui-vite/actions/workflows/main.yml)
-
+<a href="https://github.com/lxw-peter/smarty-ui-vite/actions/workflows/main.yml"><img src="https://github.com/lxw-peter/smarty-ui-vite/actions/workflows/main.yml/badge.svg"/></a>
 </p>
 
 ## 搭建开发环境
