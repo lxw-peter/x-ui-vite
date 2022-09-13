@@ -14,7 +14,7 @@
     "dev": "vite",
     "build": "pnpm build:components",
     "build:all": "vite build",
-    "build:components": "ts-node ./script/build.ts",
+    "build:components": "esno script/build.ts",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
