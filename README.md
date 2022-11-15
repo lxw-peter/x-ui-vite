@@ -465,6 +465,37 @@ jobs:
 
 ## 使用 Monorepo 的构建方式管理组件库
 
+- 安装全局npm包
+
+```sh
+pnpm install vue -w
+```
+- 子包安装单独 npm 包
+
+```sh
+# 在根目录下执行如下命令，表示在 @package/a 包中单独安装 vue
+pnpm install vue -r --filter @package/a 
+```
+
+- 子包安装其它 package 模块
+
+```sh
+# 在根目录下执行如下命令，表示在 @package/b 包中安装 @package/b 
+pnpm install @package/a -r --filter @package/b 
+```
+
+安装成功后 `package.json` 的依赖中会显示 workspace 字段，如下所示
+
+```json
+ {
+  "dependencies": {
+    "@types/node": "^18.7.15",
+    "vue": "^3.2.39",
+    "x-ui-vite": "workspace:^0.0.6"
+  }
+ }
+ ```
+
 ## 实现组件库按需引入
 
 ## 文档部署
