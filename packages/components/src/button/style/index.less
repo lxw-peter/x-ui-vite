@@ -1,22 +1,155 @@
 @import '../../theme/variable.less';
 
 .@{prefix-name}-button {
-  height: 40px;
-  line-height: 40px;
-  padding: 0 20px;
-  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  white-space: nowrap;
   text-align: center;
-  background: ~'var(--@{prefix-name}-btn-primary-bg-color)';
-  color: ~'var(--@{prefix-name}-btn-primary-color)';
-  border: 1px solid ~'var(--@{prefix-name}-btn-primary-border-color)';
-  font-size: 16px;
-  font-weight: bolder;
-  border-radius: 2px;
   cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  height: 32px;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  border-width: 1px;
 
-  &:hover {
-    background: ~'var(--@{prefix-name}-btn-primary-bg-color-hover)';
-    color: ~'var(--@{prefix-name}-btn-primary-color-hover)';
-    border: 1px solid ~'var(--@{prefix-name}-btn-primary-border-color-hover)';
+  // contented
+  &-default-contained {
+    background: ~'var(--@{prefix-name}-btn-default-contained-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-default-contained-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-default-contained-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-default-contained-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-default-contained-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-default-contained-border-color-hover)';
+    }
+  }
+
+  &-primary-contained {
+    background: ~'var(--@{prefix-name}-btn-primary-contained-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-primary-contained-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-primary-contained-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-primary-contained-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-primary-contained-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-primary-contained-border-color-hover)';
+    }
+
+    // TODO 鼠标滑过被禁用的按钮，显示效果不变，但存在重复代码
+    &.@{prefix-name}-button-disabled:hover {
+      background: ~'var(--@{prefix-name}-btn-primary-contained-bg-color)';
+      color: ~'var(--@{prefix-name}-btn-primary-contained-color)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-primary-contained-border-color)';
+    }
+  }
+
+  &-success-contained {
+    background: ~'var(--@{prefix-name}-btn-success-contained-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-success-contained-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-success-contained-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-success-contained-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-success-contained-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-success-contained-border-color-hover)';
+    }
+  }
+
+  &-warning-contained {
+    background: ~'var(--@{prefix-name}-btn-warning-contained-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-warning-contained-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-warning-contained-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-warning-contained-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-warning-contained-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-warning-contained-border-color-hover)';
+    }
+  }
+
+  &-danger-contained {
+    background: ~'var(--@{prefix-name}-btn-danger-contained-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-danger-contained-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-danger-contained-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-danger-contained-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-danger-contained-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-danger-contained-border-color-hover)';
+    }
+  }
+
+  // outlined
+  &-default-outlined {
+    background: ~'var(--@{prefix-name}-btn-default-outlined-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-default-outlined-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-default-outlined-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-default-outlined-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-default-outlined-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-default-outlined-border-color-hover)';
+    }
+  }
+
+  &-primary-outlined {
+    background: ~'var(--@{prefix-name}-btn-primary-outlined-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-primary-outlined-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-primary-outlined-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-primary-outlined-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-primary-outlined-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-primary-outlined-border-color-hover)';
+    }
+  }
+
+  &-success-outlined {
+    background: ~'var(--@{prefix-name}-btn-success-outlined-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-success-outlined-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-success-outlined-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-success-outlined-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-success-outlined-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-success-outlined-border-color-hover)';
+    }
+  }
+
+  &-warning-outlined {
+    background: ~'var(--@{prefix-name}-btn-warning-outlined-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-warning-outlined-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-warning-outlined-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-warning-outlined-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-warning-outlined-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-warning-outlined-border-color-hover)';
+    }
+  }
+
+  &-danger-outlined {
+    background: ~'var(--@{prefix-name}-btn-danger-outlined-bg-color)';
+    color: ~'var(--@{prefix-name}-btn-danger-outlined-color)';
+    border: 1px solid ~'var(--@{prefix-name}-btn-danger-outlined-border-color)';
+
+    &:hover {
+      background: ~'var(--@{prefix-name}-btn-danger-outlined-bg-color-hover)';
+      color: ~'var(--@{prefix-name}-btn-danger-outlined-color-hover)';
+      border: 1px solid ~'var(--@{prefix-name}-btn-danger-outlined-border-color-hover)';
+    }
+  }
+
+  &-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }
